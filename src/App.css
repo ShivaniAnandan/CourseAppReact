@@ -342,12 +342,12 @@ left: 120px;
 }
 .flex{
   padding: 10rem 2rem;
-  margin: 0rem 5rem;
+  margin: 0rem 3rem;
 }
 .abs{
   position: absolute;
   top: 350px;
-  left: 550px;
+  left: 523px;
   z-index: 1;
 }
 /* .arrows{
