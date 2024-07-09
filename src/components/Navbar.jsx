@@ -26,7 +26,7 @@ const Navbar = () => {
         </li>
       </ul>
       <img src={icons} className='iconimg'/>
-      <form class="d-flex align-items-baseline">
+      <form class="d-flex align-items-baseline gap-3">
         <a href='#' className='login'>Login</a>
         <button class="btn" type="submit">Sign up</button>
       </form>

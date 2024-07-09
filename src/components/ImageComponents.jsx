@@ -13,7 +13,7 @@ const ImageComponents = () => {
         </div>
         <img src={icon2} className='icon2' />
         <img src={icon1} className='icon1' />
-        <div className='img-card'>
+        <div className='img-card girl'>
             <img src={girlimg} alt="girl" className="girl" />
         </div>
         <img src={videoicon} className='videoIcon' />

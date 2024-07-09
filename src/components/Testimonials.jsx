@@ -11,7 +11,7 @@ const Testimonials = () => {
                 <h3>Testimonials</h3>
                 <p>What our student say about us</p>
                 <img src={circle} className='circle' />
-                <div className="d-flex justify-content-between flex">
+                <div className="d-flex justify-content-around flex">
                     <div className="cardFlex">
                         <img src={user} className='user' />
                         <p>Such an amazing traniner and easily understand the entire<br></br> 

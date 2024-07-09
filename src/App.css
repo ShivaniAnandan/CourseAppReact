@@ -1,6 +1,6 @@
 
 *{
-  margin: 0px 10px;
+  margin: 0;
   padding: 0;
 }
 #root{
@@ -27,7 +27,8 @@
 .nav-flex{
   margin: 0 !important;
   display: flex !important;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
+  gap: 20px;
 }
 #navbarSupportedContent{
   width: 70% !important;
@@ -54,8 +55,7 @@ nav{
 
 /* Header Styling */
 .content{
-  width: 98.5%;
-  margin: 0 10px;
+  margin: 0;
 }
 .h1{
   font-size: 50px;
@@ -65,7 +65,7 @@ nav{
    display: flex;
    justify-content: space-between;
    padding-right: 3rem;
-   margin: 0;
+   /* margin: 0; */
    position: relative;
 }
 
@@ -91,6 +91,9 @@ nav{
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background-color: #3C2BB8;
 }
 
@@ -100,7 +103,7 @@ nav{
   width: 420px;
   color: black;
   align-items: baseline;
-  gap: 10px;
+  justify-content: space-around;
   padding: 10px;
 }
 
@@ -114,6 +117,7 @@ nav{
 
 .top{
   display: flex;
+  gap: 20px;
   height: 145px;
   margin-top:70px;
 }
@@ -179,9 +183,9 @@ nav{
 }
 .container{
   padding: 2rem;
-  margin-left:155px;
-  margin-right: 180px;
-  width: 90%;
+  /* margin-left:155px;
+  margin-right: 180px; */
+  /* width: 90%; */
   background-color:#DCEDFF;
 }
 .courses{
@@ -194,10 +198,10 @@ nav{
 }
 
 .btn-flex{
-  margin-left:155px;
-  margin-right: 170px;
+  /* margin-left:155px;
+  margin-right: 170px; */
   padding-bottom: 3rem;
-  width: 90%;
+  /* width: 90%; */
   background-color:#DCEDFF;
 }
 .course-content{
@@ -257,38 +261,43 @@ nav{
 
 /* Image Components styling */
 .img-card{
-  padding: 3rem 10rem;
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: center;
   /* padding-bottom:0 ; */
 }
 .img-card img{
-  width: 100%;
+  width: 80%;
 }
 .imageComponents{
   position: relative;
+}
+.girl{
+  padding-bottom: 0;
 }
 .videoIcon{
   position: absolute;
   width: 200px !important;
   height: 200px !important;
-  top: 720px;
-  left: 700px;
+  top: 700px;
+  left: 740px;
 }
 .banner{
   position: absolute;
-  bottom: 50px;
-  right: 100px;
+  bottom: 0px;
+  right: 165px;
   width: 130px;
 }
 
 .icon1{
   position: absolute;
-  top: 450px;
+  top: 440px;
   right: 50px;
 }
 .icon2{
 position: absolute;
-top: 385px;
-left: 120px;
+top: 380px;
+left: 180px;
 }
 
 /* Testimonials styling */
@@ -342,13 +351,13 @@ left: 120px;
 }
 .flex{
   padding: 10rem 2rem;
-  margin: 0rem 4rem;
-  margin-right: 7rem;
+  /* margin: 0rem 4rem; */
+  /* margin-right: 7rem; */
 }
 .abs{
   position: absolute;
   top: 350px;
-  left: 523px;
+  left: 605px;
   z-index: 1;
 }
 /* .arrows{

@@ -80,7 +80,7 @@ const Courses = () => {
             <div className="row">
                 {courses.map(course => {
                    return(
-                   <div className="col-lg-3 mb-3 mx-3">
+                   <div className="col-4 mb-3">
                    <div className="card" key={course.id}>
                    <img src={course.img} className="card-img-top" alt="..." />
                    <div className="card-body">
