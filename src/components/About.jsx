@@ -1,14 +1,14 @@
 import React from 'react';
 import Categories from './Categories';
-import FeaturedCourses from './FeaturedCourses';
+import Testimonials from './Testimonials';
 
-const Courses = () => {
+const About = () => {
     return (
         <div>
             <Categories />
-            <FeaturedCourses />
+            <Testimonials />
         </div>
     );
 };
 
-export default Courses;
+export default About;

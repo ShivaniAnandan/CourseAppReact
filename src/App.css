@@ -411,3 +411,51 @@ left: 180px;
   text-align: center;
   margin: 0;
 }
+
+/* Tablet landscape (768px - 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    padding: 2rem 1rem;
+  }
+  .nav-link {
+    font-size: 1.2rem;
+  }
+  .card {
+    width: 250px;
+  }
+}
+
+/* Mobile landscape (320px - 480px) */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .header {
+    padding: 1rem 0.5rem;
+  }
+  .nav-link {
+    font-size: 1rem;
+  }
+  .card {
+    width: 200px;
+  }
+  .img-card img {
+    width: 60%;
+  }
+}
+
+/* Mobile portrait (0px - 320px) */
+@media only screen and (max-width: 320px) {
+  .header {
+    padding: 0.5rem 0.2rem;
+  }
+  .nav-link {
+    font-size: 0.8rem;
+  }
+  .card {
+    width: 150px;
+  }
+  .img-card img {
+    width: 40%;
+  }
+  .testimonials {
+    flex-direction: column;
+  }
+}
