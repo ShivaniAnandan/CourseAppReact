@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/Askmeidentity 2.png';
 import icons from '../assets/Group 1.png';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { myContext } from '../App';
 
 const Navbar = ({ login }) => {
+  const { getCartCount, setUser } = useContext(myContext);
+
   const navigate = useNavigate();
   
-  // Get the user from localStorage
   const user = JSON.parse(localStorage.getItem('user'));
 
-  // Handle logout function
   const handleLogout = () => {
-    localStorage.removeItem('user'); // Remove user from localStorage
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/login');
   };
 
   return (
@@ -30,19 +31,25 @@ const Navbar = ({ login }) => {
                 <Link className='nav-link' to='/'>Home</Link>
               </li>
               <li className="nav-item">
-                {/* <a className="nav-link" href="#">About</a> */}
                 <Link className='nav-link' to='/about'>About</Link>
               </li>
               <li className="nav-item">
                 <Link className='nav-link' to='/courses'>Courses</Link>
-                {/* <a className="nav-link" href="#">Courses</a> */}
               </li>
               <li className="nav-item">
                 <Link className='nav-link' to='/contact'>Contact</Link>
-                {/* <a className="nav-link" href="#">Contact</a> */}
               </li>
             </ul>
-            <img src={icons} className='iconimg' alt="Icons" />
+            <div className="cart-icon">
+            <img 
+                src={icons} 
+                className='iconimg' 
+                alt="Icons" 
+                style={{cursor: 'pointer'}} 
+                onClick={() => navigate('/cart')} // Navigate to cart page on click
+            />
+            <span className="cart-count">{getCartCount()}</span>
+            </div>
             <div className="d-flex gap-3 ms-2">
               {login && user ? (
                 <div className="dropdown">

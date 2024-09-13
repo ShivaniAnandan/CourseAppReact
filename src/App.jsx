@@ -21,6 +21,10 @@ import cyber4 from './assets/allcoursesimage/cyber4.webp';
 import cyber5 from './assets/allcoursesimage/cyber5.webp';
 import career4 from './assets/allcoursesimage/career4.png';
 import career5 from './assets/allcoursesimage/career5.gif';
+import Cart from './components/Cart'
+import Payment  from './components/Payment';
+import SearchResults from './components/SearchResults'
+import CourseDetail from './components/CourseDetail'
 
 //Creating a context
 export const myContext = createContext('');
@@ -30,6 +34,7 @@ function App() {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [login,setLogin] = useState(false);
+  const [user, setUser] = useState(null); // `user` will be null if not logged in
  
   const allCourses = [
     //FullstackDevelopment Cards
@@ -238,13 +243,37 @@ function App() {
         }
 ];
 
-  return (
+const [cart, setCart] = useState([]);
+
+const addToCart = (course) => {
+        setCart((prevCart) => [...prevCart, course]);
+    };
+
+const removeFromCart = (courseId) => {
+        setCart((prevCart) => prevCart.filter(course => course.id !== courseId));
+    };
+
+const getCartCount = () => cart.length;    
+
+const toggleCartItem = (course) => {
+    setCart((prevCart) => {
+        if (prevCart.some(cartItem => cartItem.id === course.id)) {
+            // If the course is already in the cart, remove it
+            return prevCart.filter(cartItem => cartItem.id !== course.id);
+        } else {
+            // If the course is not in the cart, add it
+            return [...prevCart, course];
+        }
+    });
+};
+
+return (
     <>
       <div>
         {/* <p className='h1'>App Component</p> */}
         <BrowserRouter>
              {/* Providing context */}
-             <myContext.Provider value={allCourses}>
+             <myContext.Provider value={{user,setUser,cart, addToCart, removeFromCart, allCourses , getCartCount, toggleCartItem}}>
             <div>
               <Navbar login={login}/>
             </div>
@@ -255,6 +284,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/courses' element={<Courses />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path="/payment" element={<Payment />} /> 
+            <Route path="/search-results" element={<SearchResults />} />
+            <Route path="/course/:courseId" element={<CourseDetail />} />
             {/* <Route path="/" element={<Header />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/categories" element={<Categories />} />

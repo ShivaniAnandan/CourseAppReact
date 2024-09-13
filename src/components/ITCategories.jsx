@@ -5,14 +5,20 @@ import cardimg3 from '../assets/div.features-box-image (2).png';
 import cardimg4 from '../assets/div.features-box-image (3).png';
 import cardimg5 from '../assets/div.features-box-image (4).png';
 import cardimg6 from '../assets/div.features-box-image (5).png';
+import { useNavigate } from 'react-router-dom';
 
 const ITCategories = ({ onSelectCategory }) => {
+    const navigate = useNavigate();
     const categories = [
         { id: 1, img: cardimg1, title: "Full Stack Development", total: 25 },
         { id: 2, img: cardimg2, title: "Data Science", total: 16 },
         { id: 3, img: cardimg5, title: "Cyber Security", total: 76 },
         { id: 4, img: cardimg4, title: "Career", total: 22 },
     ];
+
+    const handleCategoryClick = (category) => {
+        navigate(`/courses?category=${encodeURIComponent(category)}`);
+    };
 
     return (
         <div className="category">
@@ -23,7 +29,7 @@ const ITCategories = ({ onSelectCategory }) => {
                         <div 
                             className="card text-center" 
                             style={{width:"170px", padding:"1rem", alignItems:"center", gap:"20px", cursor: 'pointer'}}
-                            onClick={() => onSelectCategory(category.title)} // Handle click event
+                            onClick={() => handleCategoryClick(category.title)} // Handle click event
                         >
                             <img src={category.img} className='img' style={{width:"50px", height:"50px"}} alt={category.title} />
                             <div className="card-body">

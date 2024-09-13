@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Box, InputAdornment, Grid, Typography } from '@mui/material';
 import { Email, Lock } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { login } from '../redux/UserSlice';
+import { myContext } from '../App';
 
+// Validation Schema
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
 const Login = ({ setLogin }) => {
+  const { setUser } = useContext(myContext);
   const navigate = useNavigate();
-//   const dispatch = useDispatch();
 
+  // Profile images array
   const profileImages = [
     'https://t3.ftcdn.net/jpg/02/40/30/56/240_F_240305699_X3ky3vcpPRDNBtg1qjmLW7ntzPGU0eGN.jpg',
-    // add more images here
+    'https://t4.ftcdn.net/jpg/05/74/97/67/240_F_574976795_xGCzNlYpDw7wf6gSWFLVaFuTGhOMuaTV.jpg',
+    'https://t3.ftcdn.net/jpg/06/01/50/96/240_F_601509638_jDwIDvlnryPRhXPsBeW1nXv90pdlbykC.jpg',
+    'https://t4.ftcdn.net/jpg/05/80/60/33/240_F_580603305_ysEbDBvHCKM9TyzEINHyW614NWLdTe0b.jpg',
+    'https://t4.ftcdn.net/jpg/05/47/35/41/240_F_547354169_c1lbO3x3Xw5rwr9WThaHUamGSEZI4IsP.jpg',
+    'https://t4.ftcdn.net/jpg/07/31/57/43/240_F_731574325_KUHqpDJBMI4T4dIeoMS7GH0zDSQj0VlT.jpg',
+    'https://t4.ftcdn.net/jpg/05/59/46/33/240_F_559463395_dBqVnSCQ479taoyYSaohffGOLQiI3x5w.jpg',
+    'https://t4.ftcdn.net/jpg/07/57/31/69/240_F_757316903_KiJ2jGy5vQ0dB9ILtjFo6p48UZ7DAoxa.jpg',
+    'https://t3.ftcdn.net/jpg/06/21/27/04/240_F_621270406_n7Vx7a5RuRJVmaI1AEltnsfA2SjkOrrr.jpg',
+    'https://t4.ftcdn.net/jpg/03/28/94/79/240_F_328947974_26fQsrAPA5cLoL9fSfWZhLM58AQO6rCz.jpg',
   ];
 
   const getRandomProfileImage = () => {
@@ -26,7 +35,20 @@ const Login = ({ setLogin }) => {
     return profileImages[randomIndex];
   };
 
-  const storedUser = JSON.parse(localStorage.getItem('user'));
+  // Form submission handler
+  const handleLogin = (values) => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (storedUser && values.email === storedUser.email && values.password === storedUser.password) {
+      const profileImage = getRandomProfileImage();
+      localStorage.setItem('user', JSON.stringify({ ...storedUser, profileImage }));
+      setUser({ ...storedUser, profileImage });
+      setLogin(true);
+      navigate('/');
+    } else {
+      alert('Invalid email or password');
+    }
+  };
 
   return (
     <Grid
@@ -39,7 +61,7 @@ const Login = ({ setLogin }) => {
       <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Box
           component="img"
-          src="https://readymadeui.com/signin-image.webp" // replace with your desired image URL
+          src="https://readymadeui.com/signin-image.webp"
           alt="Login"
           sx={{ width: '80%', height: 'auto', borderRadius: '10px' }}
         />
@@ -53,16 +75,7 @@ const Login = ({ setLogin }) => {
           <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              if (storedUser && values.email === storedUser.email && values.password === storedUser.password) {
-                const profileImage = getRandomProfileImage();
-                localStorage.setItem('user', JSON.stringify({ name: storedUser.name, email: values.email, profileImage }));
-                setLogin(true);
-                navigate('/');
-              } else {
-                alert('Invalid email or password');
-              }
-            }}
+            onSubmit={handleLogin}
           >
             {({ errors, touched }) => (
               <Form>

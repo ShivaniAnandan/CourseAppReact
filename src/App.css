@@ -100,7 +100,7 @@ nav{
 .form-flex{
   display: flex;
   background-color: #FFFFFF;
-  width: 420px;
+  width: 440px;
   color: black;
   align-items: baseline;
   justify-content: space-around;
@@ -109,6 +109,8 @@ nav{
 
 .women{
   height: 550px;
+  border-radius: 8px; /* Optional: for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
 }
 
 .right{
@@ -170,9 +172,14 @@ nav{
   width: 320px;
   margin: 0;
   border-radius: 20px;
+  height: 100%;
 }
 .card img{
   margin: 0;
+  
+}
+.card-img-top{
+  height:212px;
 }
 .card-body{
   margin: 0;
@@ -250,7 +257,15 @@ nav{
 .content-flex{
   margin-top: 70px;
 }
+.img {
+  width: 24px; /* Adjust the size as needed */
+  height: 24px; /* Adjust the size as needed */
+  transition: transform 0.2s; /* Optional: add a hover effect */
+}
 
+.img:hover {
+  transform: scale(1.1); /* Optional: add a hover effect */
+}
 /* Categories styling */
 .category{
   background: linear-gradient(180deg, #D9ECFF 0%, rgba(217, 236, 255, 0) 100%);
@@ -459,3 +474,8 @@ left: 180px;
     flex-direction: column;
   }
 }
+
+/* Payment page Syling */
+
+
+/* CheckoutPage Styling */

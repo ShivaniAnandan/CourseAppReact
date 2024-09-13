@@ -1,0 +1,55 @@
+/* Payment.css */
+.payment {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.order-summary {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-summary h4 {
+  margin-bottom: 20px;
+}
+
+.order-summary .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.order-summary .item:last-child {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.pay-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pay-button:hover {
+  background-color: #e64a19;
+}
+
+.payment-status {
+  margin-top: 20px;
+  text-align: center;
+}

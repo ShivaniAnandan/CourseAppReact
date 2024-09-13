@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import circle from '../assets/Ellipse 118.png';
 import courseimg1 from '../assets/course1.png';
 import courseimg2 from '../assets/course2.png';
@@ -15,7 +15,23 @@ import line2 from '../assets/Line 16.png';
 import rect1 from '../assets/Rectangle 8680.png';
 import rect2 from '../assets/Rectangle 8682.png';
 import rect3 from '../assets/Rectangle 8681.png';
+import { myContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 const FeaturedCourses = () => {
+    const {toggleCartItem,cart,user } = useContext(myContext);
+
+    const navigate = useNavigate();
+
+    const isInCart = (course) => cart.some(cartItem => cartItem.id === course.id);
+
+    const handleAddToCart = (course) => {
+        if (user) {
+            toggleCartItem(course);
+        } else {
+            navigate('/login'); // Redirect to login page if not logged in
+        }
+    };
+
     const courses = [
         {
             id:1,
@@ -91,7 +107,13 @@ const FeaturedCourses = () => {
                      <h5 className="card-title mb-4">{course.title}</h5>
                      <div className="d-flex justify-content-between" style={{margin:0,color:"#4E596B",alignItems:"baseline"}}>
                         <p className="card-text">Rs.499</p>
-                        <img src={cartimg} alt="carticon" className='img'/>
+                        <img 
+                        src={isInCart(course) ? cartFilledImg : cartimg} 
+                        alt="carticon" 
+                        className='img'
+                        style={{cursor: 'pointer'}} 
+                        onClick={() => handleAddToCart(course)} // Toggle course in cart on click
+                        />
                      </div>
                    </div>
                  </div>
@@ -101,7 +123,7 @@ const FeaturedCourses = () => {
             </div>
             </div>
             <div className='d-flex justify-content-center btn-flex'>
-            <button className='course-btn btn'>Explore courses</button>
+            <button className='course-btn btn' onClick={() => navigate('/courses')}>Explore courses</button>
             </div>
             <div className="course-content">
                 <h3>Why <span style={{color:"#0E38CD"}}>learn</span> with our courses?</h3>
