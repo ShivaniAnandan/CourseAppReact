@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { myContext } from '../App';
 import cartimg from '../assets/cart.png';
 import cartFilledImg from '../assets/cart-filled.png';
-
+import CoursePreviewVideo from '../assets/CoursePreviewVideo.mp4';
 const CourseDetail = () => {
     const { courseId } = useParams();
     const { allCourses, toggleCartItem, cart, user } = useContext(myContext);
@@ -32,15 +32,7 @@ const CourseDetail = () => {
         <div className="container my-5">
             <div className="row">
                 <div className="col-md-8">
-                    <div className="video-container mb-4">
-                        <iframe 
-                            src={course.previewVideoUrl} 
-                            title={course.title}
-                            frameBorder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen
-                        ></iframe>
-                    </div>
+                    
                     <h1>{course.title}</h1>
                     <p>{course.description}</p>
                     <div className="d-flex justify-content-between my-4">
@@ -49,11 +41,7 @@ const CourseDetail = () => {
                         <p><strong>Duration:</strong> {course.duration}</p>
                     </div>
                     <p><strong>Price:</strong> Rs.{course.price}</p>
-                </div>
-                <div className="col-md-4">
-                    <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title">Add to Cart</h5>
+                    <h5 className="card-title">Add to Cart</h5>
                             <img 
                                 src={isInCart ? cartFilledImg : cartimg} 
                                 alt="carticon" 
@@ -61,6 +49,20 @@ const CourseDetail = () => {
                                 style={{ cursor: 'pointer', width: '30px' }} 
                                 onClick={handleAddToCart}
                             />
+                </div>
+                <div className="col-md-4">
+                    <div className="card">
+                        <div className="card-body">
+                        <div className="video-container mb-4">
+                        <iframe 
+                            src={CoursePreviewVideo} 
+                            title={course.title}
+                            frameBorder="0" 
+                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <h1>Hello world</h1>
                         </div>
                     </div>
                 </div>
