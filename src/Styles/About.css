@@ -1,0 +1,140 @@
+/* General Container */
+.about-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #0E38CD, #4E8DFF);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Mission Section */
+  .mission-section {
+    margin: 50px 0;
+    text-align: center;
+  }
+  
+  .mission-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .mission-section p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+  }
+  
+  /* Core Values Section */
+  .values-section {
+    background: #f5f5f5;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .values-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  .values-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .value-item {
+    flex: 1 1 30%;
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .value-item h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #0E38CD;
+  }
+  
+  /* Instructors Section */
+  .instructors-section {
+    margin: 50px 0;
+    text-align: center;
+  }
+  
+  .instructors-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .instructor-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .instructor-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .instructor-details h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #0E38CD;
+  }
+  
+  /* Testimonials Section */
+  .testimonials-section {
+    background: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .testimonials-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .testimonial-item {
+    flex: 1 1 40%;
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .testimonial-item p {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .testimonial-item h4 {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #0E38CD;
+  }
+  

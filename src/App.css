@@ -270,10 +270,12 @@ nav{
 .category{
   background: linear-gradient(180deg, #D9ECFF 0%, rgba(217, 236, 255, 0) 100%);
   text-align: center;
-  padding: 3rem 5rem;
+  padding: 5rem 18rem;
   padding-bottom: 7rem;
 }
-
+.category h3{
+  margin-bottom: 3rem;
+}
 /* Image Components styling */
 .img-card{
   padding: 3rem 5rem;
@@ -479,3 +481,123 @@ left: 180px;
 
 
 /* CheckoutPage Styling */
+
+.video-container{
+  width: 100%;
+  height: 100%;
+}
+
+.video-container iframe{
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+ 
+}
+
+.card-body{
+  padding: 0;
+}
+
+/* MyCourses styling */
+.my-courses-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.my-course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.my-course-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+
+.my-course-card:hover {
+  transform: scale(1.05);
+}
+
+.my-course-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.my-course-title {
+  font-size: 1.2rem;
+  margin: 15px 0;
+}
+
+.start-learning-button {
+  background-color: #3399cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-learning-button:hover {
+  background-color: #287aa0;
+}
+
+/*Filter styling */
+.filter-category{
+  padding: 20px;
+}
+
+.filter-category h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-category span {
+  color: #0E38CD;
+}
+
+.filter-category .row {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.filter-category .col {
+  flex-basis: 20%;
+}
+
+.filter-category-item {
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border 0.3s, color 0.3s;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+.filter-category-item:hover {
+  border: 2px solid green;
+}
+
+.filter-category-title {
+  font-size: 18px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.filter-category-item:hover .filter-category-title {
+  color: green;
+}

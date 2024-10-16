@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import { TextField, Button, Box, InputAdornment, Grid, Typography } from '@mui/material';
 import { AccountCircle, Email, Lock, CheckCircle } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -16,8 +17,30 @@ const validationSchema = Yup.object().shape({
     .required('Confirm password is required'),
 });
 
-const Register = ({ setName, setEmail, setPassword }) => {
+const Signup = ({ setName, setEmail, setPassword }) => {
   const navigate = useNavigate();
+
+  const handleRegister = async (values) => {
+    try {
+      const response = await axios.post('http://localhost:4000/api/auth/signup', {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      });
+
+      if (response.status === 201) {
+        navigate('/login'); // Redirect to login after successful registration
+      }
+      // Store user data in localStorage
+      // localStorage.setItem('user', JSON.stringify({
+      //   name: values.name,
+      //   email: values.email,
+      //   password: values.password
+      // }))
+    } catch (error) {
+      console.error('Registration error:', error.response ? error.response.data.message : error.message);
+    }
+  };
 
   return (
     <Grid container sx={{ height: '100vh', background: 'linear-gradient(72.2deg, rgba(115, 159, 232, 0.9) 26.49%, rgba(79, 24, 202, 0.9) 85.53%)' }}>
@@ -52,18 +75,7 @@ const Register = ({ setName, setEmail, setPassword }) => {
             initialValues={{ name: '', email: '', password: '', confirmPassword: '' }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              setName(values.name);
-              setEmail(values.email);
-              setPassword(values.password);
-
-              // Store user data in localStorage
-              localStorage.setItem('user', JSON.stringify({
-                name: values.name,
-                email: values.email,
-                password: values.password
-              }));
-
-              navigate('/login'); // Redirect to login page after registration
+                handleRegister(values);
             }}
           >
             {({ errors, touched }) => (
@@ -153,16 +165,28 @@ const Register = ({ setName, setEmail, setPassword }) => {
                     />
                   </div>
                   <Button type="submit" variant="contained" color="primary" fullWidth>
-                    Register
+                    Signup
                   </Button>
                 </Box>
               </Form>
             )}
           </Formik>
+
+          <Typography variant="body2" sx={{ marginTop: 2 }}>
+            Already have an account?{' '}
+            <Typography
+              component="span"
+              variant="body2"
+              sx={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
+              onClick={() => navigate('/login')}
+            >
+              Login
+            </Typography>
+          </Typography>
         </Box>
       </Grid>
     </Grid>
   );
 };
 
-export default Register;
+export default Signup;

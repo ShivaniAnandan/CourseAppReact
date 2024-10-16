@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import logo from '../assets/Askmeidentity 2.png';
 import icons from '../assets/Group 1.png';
+import carticon from '../assets/iconcart.png';
 import { useNavigate, Link } from 'react-router-dom';
 import { myContext } from '../App';
 
@@ -13,6 +14,7 @@ const Navbar = ({ login }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setUser(null);
     navigate('/login');
   };
@@ -39,10 +41,13 @@ const Navbar = ({ login }) => {
               <li className="nav-item">
                 <Link className='nav-link' to='/contact'>Contact</Link>
               </li>
+              <li className="nav-item">
+                <Link className='nav-link' to='/mycourses'>My Courses</Link>
+              </li>
             </ul>
             <div className="cart-icon">
             <img 
-                src={icons} 
+                src={carticon} 
                 className='iconimg' 
                 alt="Icons" 
                 style={{cursor: 'pointer'}} 
@@ -70,7 +75,7 @@ const Navbar = ({ login }) => {
               ) : (
                 <>
                   <Link to='/login' className='login text-decoration-none'>Login</Link>
-                  <button className="btn mx-2" type="button"><Link to="/register" className='text-decoration-none text-dark'>Sign up</Link></button>
+                  <button className="btn mx-2" type="button"><Link to="/signup" className='text-decoration-none text-dark'>Sign up</Link></button>
                 </>
               )}
             </div>

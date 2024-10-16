@@ -16,7 +16,7 @@ const SearchResults = () => {
         setSearchTerm(search);
     }, [location.search]);
 
-    const isInCart = (course) => cart.some(cartItem => cartItem.id === course.id);
+    const isInCart = (course) => cart.some(cartItem => cartItem._id === course._id);
 
     const filteredCourses = allCourses.filter(course =>
         course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -36,7 +36,7 @@ const SearchResults = () => {
             <div className="row">
                 {filteredCourses.length > 0 ? (
                     filteredCourses.map(course => (
-                        <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={course.id}>
+                        <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={course._id}>
                             <div className="card">
                                 <img src={course.img} className="card-img-top" alt={course.title} />
                                 <div className="card-body">

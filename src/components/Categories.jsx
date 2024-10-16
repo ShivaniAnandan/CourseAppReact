@@ -20,12 +20,12 @@ const Categories = () => {
                     <p style={{color:"#4E596B",fontWeight:"600"}} className='mb-5'>100+ unique online course list designs</p>
                     {categories.map(category=>{
                         return(
-                            <div className="col">
+                            <div className="col" key={category.id}>
                             <div className="card text-center" style={{width:"170px",padding:"1rem",alignItems:"center",gap:"20px"}}>
                                 <img src={category.img} className='img' style={{width:"50px" , height:"50px"}}/>
                                 <div className="card-body">
-                                    <h5 className="card-title" style={{color:"#324361;"}}>{category.title}</h5>
-                                    <p className="card-text"  style={{color:"#4F547B;",fontWeight:"600",marginTop:"20px"}}>{category.total} Courses</p>
+                                    <h5 className="card-title" style={{color:"#324361"}}>{category.title}</h5>
+                                    <p className="card-text"  style={{color:"#4F547B",fontWeight:"600",marginTop:"20px"}}>{category.total} Courses</p>
                                 </div>
                             </div>
                         </div>

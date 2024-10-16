@@ -5,6 +5,10 @@ import headerimg from '../assets/headerimg.png';
 import rect1 from '../assets/Rectangle1.png';
 import rect2 from '../assets/Rectangle2.png';
 import rect3 from '../assets/Rectangle3.png';
+import spotify from '../assets/spotify.png';
+import amazon from '../assets/amazon.png';
+import cisco from '../assets/cisco.png';
+import logitech from '../assets/logitech.png';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
@@ -65,12 +69,12 @@ const Header = () => {
                 <img src={rect3} className='abs-img3' />
             </div>
             <div className="bottom">
-                <img src="https://s3-alpha-sig.figma.com/img/c1b1/f640/726c33f04f0c41d04f53e5f28fa5f84a?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mOeImjcnL~uTGLH~4K-IOU0mJFxiuSLRMDQHeVOfr4tifXuMFfmEzd6ypIzi02pVPM4TjaqidgyNUev1U1iid0CUgxA121HnZYimRAv62cX1n1fK6-A7TNNObZNsQXaCUmv83EGS7gniMelt0BsXZyXMh2ejp1Y9VsJu5nR-Maq3zg7E~FXTxmEDDOboN9Ikwb8wof~HBdSA5Ua1ecbHb37Wf50R-nqNV5Bg-GNLCOh2~CGF6X-9~GLc1pXroM2R9gDod9Z0J5JAi9es5ggFVSBfZ9-TPL1kGYSgMzuu1iiQKDrIHB5zDJOaC12X4D0u7is5bQrX~NldUS1cVj-Y1w__" />
-                <img src="https://s3-alpha-sig.figma.com/img/a0f8/fa97/6c4d4447bb64f8aa75c0e5c4b008f483?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=funb~pJeupI~V6JzIGDTaEKe5a0qdeoFa0R~H519OMwsoTmj3MkyrWyFgA9mhL3IGArqtL90xj1YM6ITJKHXLuClVuKGQaxwQwyRKe8WlLFH5X1QTC9PpYaSXqRusJLZkgmp0Ekpfh2p6iI7-bNb7poVWosPpdZHBMM1JCKGTaXYAKFOWh1cKxmV3lS38rRK7Liu7FvdGpvfl47CsikpDogTc0Zr3HIJdyCtRDAdNLPw8XcC1VXogEPWB7btXUsH8QsMbczAS72ipRfBFczrVpWe-Pmva0Rl~U7ZT6hRp5t0JKphOzQcVyzbci7V4bGYyuoxXLnQTAuIOtN6-vuHUw__" />
-                <img src="https://s3-alpha-sig.figma.com/img/c1b1/f640/726c33f04f0c41d04f53e5f28fa5f84a?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mOeImjcnL~uTGLH~4K-IOU0mJFxiuSLRMDQHeVOfr4tifXuMFfmEzd6ypIzi02pVPM4TjaqidgyNUev1U1iid0CUgxA121HnZYimRAv62cX1n1fK6-A7TNNObZNsQXaCUmv83EGS7gniMelt0BsXZyXMh2ejp1Y9VsJu5nR-Maq3zg7E~FXTxmEDDOboN9Ikwb8wof~HBdSA5Ua1ecbHb37Wf50R-nqNV5Bg-GNLCOh2~CGF6X-9~GLc1pXroM2R9gDod9Z0J5JAi9es5ggFVSBfZ9-TPL1kGYSgMzuu1iiQKDrIHB5zDJOaC12X4D0u7is5bQrX~NldUS1cVj-Y1w__" />
-                <img src="https://s3-alpha-sig.figma.com/img/66ec/ac31/a0ef94e6cbae2c33b454d7f01ce20ed5?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bP4Ntf-HshgdpyrbzsM56LkTM9rcT1uSoxkxIho~WHiOQFrmg~NOYysM9KHVaO1M2JM1O3Sel5LADltoInyRz5AfbDtDoUuECVW3kf-UZkcecLMnDLMa0w5y~4v6Lm9FpN1EqkwiCXT8lvZB6EExHRWmCGxBYNWZr5DXdm-RcJfU39EKT20Lo6cmh3X9wWonjvUpL0SHzQoQ337WOUei4bFYyAEatknN8Vb1YqeIZuFzrQ3i5wzMycy1qXMvXIJF6vfTFF1t3cINGqa6Ad~-SmTxxufSnkGcuNBcT0Mk~HyDfjO6-OABXgRdo9rSrnLvryHZQ-Z1mm~tvRYzjc3z3A__" />
-                <img src="https://s3-alpha-sig.figma.com/img/bf0a/35bf/72add22ebde85287de9e3973df8e3bd5?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RE5yVRUUkEQYew0Da31vdTvwehmrHRak5W-1jWVQIB8VuD5ICoNVdyMDkMNw4zpZXOfV3y7hmqFVnWaAjvib72~DIVEpKyuH05D6dsiZ3IHG8OvdwXN6YHdkGbbf5r0Z6FPR7DbVbOmYuEWdATGr5D5SVvX7PR7xWUfAmkCOvaoN0snuh1fiRHbg0bayYu0jWXVkxQH2RxmfJ45VG9-2GjZSMSi1NsbRwg2wRGLQYxU0XaP0l8MM26eHik3~GomQ5djIdWzay7PwsmGOpf3ESVtTjybwi6gfmKEhj6siJJCrFa9Q-5Wzbo6j-5Jw1IqlOR6p1HqT0KIV92UGmxcBTA__" />
-                <img src="https://s3-alpha-sig.figma.com/img/a0f8/fa97/6c4d4447bb64f8aa75c0e5c4b008f483?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=funb~pJeupI~V6JzIGDTaEKe5a0qdeoFa0R~H519OMwsoTmj3MkyrWyFgA9mhL3IGArqtL90xj1YM6ITJKHXLuClVuKGQaxwQwyRKe8WlLFH5X1QTC9PpYaSXqRusJLZkgmp0Ekpfh2p6iI7-bNb7poVWosPpdZHBMM1JCKGTaXYAKFOWh1cKxmV3lS38rRK7Liu7FvdGpvfl47CsikpDogTc0Zr3HIJdyCtRDAdNLPw8XcC1VXogEPWB7btXUsH8QsMbczAS72ipRfBFczrVpWe-Pmva0Rl~U7ZT6hRp5t0JKphOzQcVyzbci7V4bGYyuoxXLnQTAuIOtN6-vuHUw__" />
+                <img src={spotify} alt="spotify" />
+                <img src={amazon} alt="amazon" />
+                <img src={spotify} alt="spotify" />
+                <img src={cisco} alt="cisco" />
+                <img src={logitech} alt="logitech" />
+                <img src={amazon} alt="amazon" />
             </div>
         </div>
         </>

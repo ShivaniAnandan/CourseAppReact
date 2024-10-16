@@ -25,64 +25,77 @@ const Contact = () => {
           alignItems: 'center',
           justifyContent: 'center',
           minHeight: '100vh',
-          padding: 4,
           background: 'linear-gradient(72.2deg, rgba(115, 159, 232, 0.9) 26.49%, rgba(79, 24, 202, 0.9) 85.53%)',
+          padding: 4,
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Contact Us
-        </Typography>
-        <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', maxWidth: 400 }}>
-            <TextField
-              label="Name"
-              variant="outlined"
-              fullWidth
-              required
-            />
-            <TextField
-              label="Email"
-              type="email"
-              variant="outlined"
-              fullWidth
-              required
-              InputProps={{
-                startAdornment: (
-                  <IconButton position="start">
-                    <Email />
-                  </IconButton>
-                ),
-              }}
-            />
-            <TextField
-              label="Phone"
-              type="tel"
-              variant="outlined"
-              fullWidth
-              required
-              InputProps={{
-                startAdornment: (
-                  <IconButton position="start">
-                    <Phone />
-                  </IconButton>
-                ),
-              }}
-            />
-            <TextField
-              label="Message"
-              variant="outlined"
-              multiline
-              rows={4}
-              fullWidth
-              required
-            />
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Submit
-            </Button>
-          </Box>
-        </form>
+        {/* White container for the form */}
+        <Box
+          sx={{
+            backgroundColor: 'white',
+            padding: 4,
+            borderRadius: 2,
+            boxShadow: 3,
+            maxWidth: 500,
+            width: '100%',
+          }}
+        >
+          <Typography variant="h4" gutterBottom textAlign="center" color="primary">
+            Contact Us
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <TextField
+                label="Name"
+                variant="outlined"
+                fullWidth
+                required
+              />
+              <TextField
+                label="Email"
+                type="email"
+                variant="outlined"
+                fullWidth
+                required
+                InputProps={{
+                  startAdornment: (
+                    <IconButton position="start">
+                      <Email />
+                    </IconButton>
+                  ),
+                }}
+              />
+              <TextField
+                label="Phone"
+                type="tel"
+                variant="outlined"
+                fullWidth
+                required
+                InputProps={{
+                  startAdornment: (
+                    <IconButton position="start">
+                      <Phone />
+                    </IconButton>
+                  ),
+                }}
+              />
+              <TextField
+                label="Message"
+                variant="outlined"
+                multiline
+                rows={4}
+                fullWidth
+                required
+              />
+              <Button type="submit" variant="contained" color="primary" fullWidth>
+                Submit
+              </Button>
+            </Box>
+          </form>
+        </Box>
       </Box>
 
+      {/* Modal for submission success */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -119,8 +132,6 @@ const Contact = () => {
           </Typography>
         </Box>
       </Modal>
-
-      <Footer />
     </div>
   );
 };

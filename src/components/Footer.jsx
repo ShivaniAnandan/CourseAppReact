@@ -11,15 +11,15 @@ const Footer = () => {
             <div className="footer">
                 <div className="footer-top">
                    <div className="top-left">
-                    <h4 style={{color:"#0A033C;", marginLeft:"3rem" , marginBottom:"1.5rem",fontWeight:"bold"}}>Connect</h4>
+                    <h4 style={{color:"#0A033C", marginLeft:"3rem" , marginBottom:"1.5rem",fontWeight:"bold"}}>Connect</h4>
                     <img src={logo} className='logo' style={{marginLeft:"1rem", marginBottom:"1rem"}}/>
-                    <p style={{color:"#000000;" , fontWeight:"600"}}>Sri Jagannath Nivas,8-1-164/345/A/1,<br></br>
+                    <p style={{color:"#000000" , fontWeight:"600"}}>Sri Jagannath Nivas,8-1-164/345/A/1,<br></br>
                     Pragati Colony, Mailardevpally, Nawab<br></br>
                     Saheb Kunta, Hyd, 500005</p>
                    </div>
                    <div className="top-right d-flex gap-5">
                     <div className="d-flex flex-column gap-3">
-                        <h4 style={{color:"#0A033C;",fontWeight:"bold"}}>Classes</h4>
+                        <h4 style={{color:"#0A033C",fontWeight:"bold"}}>Classes</h4>
                         <a href='#' className='list'>Classroom courses</a>
                         <a href='#' className='list'>Virtual classroom courses</a>
                         <a href='#' className='list'>E-learning courses</a>
@@ -27,7 +27,7 @@ const Footer = () => {
                         <a href='#' className='list'>Offline Courses</a>
                     </div>
                     <div className="d-flex flex-column gap-3">
-                        <h4 style={{color:"#0A033C;",fontWeight:"bold"}}>Community</h4>
+                        <h4 style={{color:"#0A033C",fontWeight:"bold"}}>Community</h4>
                         <a href='#' className='list'>Learners</a>
                         <a href='#' className='list'>Parteners</a>
                         <a href='#' className='list'>Developers</a>
@@ -35,7 +35,7 @@ const Footer = () => {
                         <a href='#' className='list'>Blog</a>
                     </div>
                     <div className="d-flex flex-column gap-3">
-                        <h4 style={{color:"#0A033C;",fontWeight:"bold"}}>Quick links</h4>
+                        <h4 style={{color:"#0A033C",fontWeight:"bold"}}>Quick links</h4>
                         <a href='#' className='list'>Home</a>
                         <a href='#' className='list'>Professional Education</a>
                         <a href='#' className='list'>Courses</a>
@@ -44,7 +44,7 @@ const Footer = () => {
                         <a href='#' className='list'>Programs</a>
                     </div>
                     <div className="d-flex flex-column gap-3">
-                        <h4 style={{color:"#0A033C;",fontWeight:"bold"}}>More</h4>
+                        <h4 style={{color:"#0A033C",fontWeight:"bold"}}>More</h4>
                         <a href='#' className='more-list'>Press</a>
                         <a href='#' className='more-list'>Investors</a>
                         <a href='#' className='more-list'>Terms</a>

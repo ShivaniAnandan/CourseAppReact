@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Box, InputAdornment, Grid, Typography } from '@mui/material';
 import { Email, Lock } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../App';
+import axios from 'axios';
 
 // Validation Schema
 const validationSchema = Yup.object().shape({
@@ -12,9 +13,16 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-const Login = ({ setLogin }) => {
+const Login = ({ setLogin , isAuthenticated }) => {
   const { setUser } = useContext(myContext);
   const navigate = useNavigate();
+
+   // If user is already logged in, redirect them away from the login page
+  //  useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate('/');
+  //   }
+  // }, [isAuthenticated, navigate]);
 
   // Profile images array
   const profileImages = [
@@ -36,19 +44,34 @@ const Login = ({ setLogin }) => {
   };
 
   // Form submission handler
-  const handleLogin = (values) => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+  const handleLogin = async (values) => {
+    try {
+      const response = await axios.post('http://localhost:4000/api/auth/login', {
+        email: values.email,
+        password: values.password,
+      }, { withCredentials: true });
 
-    if (storedUser && values.email === storedUser.email && values.password === storedUser.password) {
-      const profileImage = getRandomProfileImage();
-      localStorage.setItem('user', JSON.stringify({ ...storedUser, profileImage }));
-      setUser({ ...storedUser, profileImage });
-      setLogin(true);
-      navigate('/');
-    } else {
+    const { token, user } = response.data;
+
+    // Store the token in localStorage
+    localStorage.setItem('token', token);
+
+    // Add profile image to user object and store in localStorage
+     const profileImage = getRandomProfileImage();
+     const updatedUser = { ...user, profileImage };
+     localStorage.setItem('user', JSON.stringify(updatedUser));
+
+    // Set the user context
+     setUser(updatedUser);
+     setLogin(true);
+
+     // Navigate to the home page
+     navigate('/');
+    } catch (error) {
       alert('Invalid email or password');
+      console.error('Login error:', error);
     }
-  };
+};
 
   return (
     <Grid
@@ -122,6 +145,12 @@ const Login = ({ setLogin }) => {
                       helperText={touched.password && errors.password}
                     />
                   </div>
+                  {/* Forgot Password Link */}
+                  <Typography variant="body2" align="right">
+                    <Link to='/forgot-password' color="primary">
+                      Forgot Password?
+                    </Link>
+                  </Typography>
                   <Button type="submit" variant="contained" color="primary" fullWidth>
                     Login
                   </Button>
@@ -129,6 +158,13 @@ const Login = ({ setLogin }) => {
               </Form>
             )}
           </Formik>
+           {/* Signup Redirect */}
+           <Typography variant="body2" align="center" sx={{ marginTop: 2 }}>
+            Don&apos;t have an account?{' '}
+            <Link to='/signup' color="primary">
+              Signup
+            </Link>
+          </Typography>
         </Box>
       </Grid>
     </Grid>
