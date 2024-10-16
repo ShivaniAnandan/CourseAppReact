@@ -1,12 +1,13 @@
 // src/Register.jsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Box, InputAdornment, Grid, Typography } from '@mui/material';
 import { AccountCircle, Email, Lock, CheckCircle } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners'; // Import the spinner
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -19,10 +20,12 @@ const validationSchema = Yup.object().shape({
 
 const Signup = ({ setName, setEmail, setPassword }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // State to manage the loader
 
   const handleRegister = async (values) => {
+    setLoading(true); // Show loader when login request is initiated
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/signup', {
+      const response = await axios.post('https://courseappbackend-yydm.onrender.com/api/auth/signup', {
         name: values.name,
         email: values.email,
         password: values.password,
@@ -39,6 +42,8 @@ const Signup = ({ setName, setEmail, setPassword }) => {
       // }))
     } catch (error) {
       console.error('Registration error:', error.response ? error.response.data.message : error.message);
+    }finally {
+      setLoading(false); // Hide loader when request is completed
     }
   };
 
@@ -79,7 +84,7 @@ const Signup = ({ setName, setEmail, setPassword }) => {
             }}
           >
             {({ errors, touched }) => (
-              <Form>
+              <Form className='form'>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 400, margin: '0 auto' }}>
                   <div>
                     <label htmlFor="name">Name</label>
@@ -87,6 +92,7 @@ const Signup = ({ setName, setEmail, setPassword }) => {
                       as={TextField}
                       id="name"
                       name="name"
+                      className="field"
                       variant="outlined"
                       fullWidth
                       margin="normal"
@@ -164,9 +170,19 @@ const Signup = ({ setName, setEmail, setPassword }) => {
                       helperText={touched.confirmPassword && errors.confirmPassword}
                     />
                   </div>
-                  <Button type="submit" variant="contained" color="primary" fullWidth>
+                  {/* <Button type="submit" variant="contained" color="primary" fullWidth>
                     Signup
-                  </Button>
+                  </Button> */}
+                  {loading ? (
+                    // Show the spinner while loading
+                    <Box display="flex" justifyContent="center" alignItems="center">
+                      <ClipLoader color="#ffffff" size={50} />
+                    </Box>
+                  ) : (
+                    <Button type="submit" variant="contained" color="primary" fullWidth>
+                      Signup
+                    </Button>
+                  )}
                 </Box>
               </Form>
             )}

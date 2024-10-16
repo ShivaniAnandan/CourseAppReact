@@ -34,7 +34,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:4000/api/auth/reset-password/${token}`, { newPassword: newPassword });
+      const response = await axios.post(`https://courseappbackend-yydm.onrender.com/api/auth/reset-password/${token}`, { newPassword: newPassword });
       setMessage(response.data.message);
       setTimeout(() => navigate('/login'), 2000); // Redirect to login after success
     } catch (err) {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Box, InputAdornment, Grid, Typography } from '@mui/material';
@@ -6,6 +6,7 @@ import { Email, Lock } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../App';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners'; // Import the spinner
 
 // Validation Schema
 const validationSchema = Yup.object().shape({
@@ -16,6 +17,7 @@ const validationSchema = Yup.object().shape({
 const Login = ({ setLogin , isAuthenticated }) => {
   const { setUser } = useContext(myContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // State to manage the loader
 
    // If user is already logged in, redirect them away from the login page
   //  useEffect(() => {
@@ -45,8 +47,9 @@ const Login = ({ setLogin , isAuthenticated }) => {
 
   // Form submission handler
   const handleLogin = async (values) => {
+    setLoading(true); // Show loader when login request is initiated
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/login', {
+      const response = await axios.post('https://courseappbackend-yydm.onrender.com/api/auth/login', {
         email: values.email,
         password: values.password,
       }, { withCredentials: true });
@@ -70,6 +73,8 @@ const Login = ({ setLogin , isAuthenticated }) => {
     } catch (error) {
       alert('Invalid email or password');
       console.error('Login error:', error);
+    }finally {
+      setLoading(false); // Hide loader when request is completed
     }
 };
 
@@ -151,9 +156,19 @@ const Login = ({ setLogin , isAuthenticated }) => {
                       Forgot Password?
                     </Link>
                   </Typography>
-                  <Button type="submit" variant="contained" color="primary" fullWidth>
+                  {/* <Button type="submit" variant="contained" color="primary" fullWidth>
                     Login
-                  </Button>
+                  </Button> */}
+                  {loading ? (
+                    // Show the spinner while loading
+                    <Box display="flex" justifyContent="center" alignItems="center">
+                      <ClipLoader color="#e0e0e0" size={50} />
+                    </Box>
+                  ) : (
+                    <Button type="submit" variant="contained" color="primary" fullWidth>
+                      Login
+                    </Button>
+                  )}
                 </Box>
               </Form>
             )}

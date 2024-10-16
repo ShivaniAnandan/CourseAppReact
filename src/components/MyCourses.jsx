@@ -13,7 +13,7 @@ const MyCourses = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/purchase/my-courses', {
+                const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/purchase/my-courses', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you're storing the token in localStorage
                     },

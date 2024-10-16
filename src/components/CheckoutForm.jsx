@@ -162,7 +162,7 @@ const CheckoutForm = ({ totalPrice, courseIds }) => {
         console.log(courseIds);
     
         try {
-            const res = await axios.post('http://localhost:4000/api/purchase/buy', paymentData, {
+            const res = await axios.post('https://courseappbackend-yydm.onrender.com/api/purchase/buy', paymentData, {
                 headers: {
                     Authorization: `Bearer ${token}` // Attach the token as a Bearer token
                 }

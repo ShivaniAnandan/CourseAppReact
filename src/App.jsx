@@ -276,7 +276,7 @@ const [cart, setCart] = useState([]);
  useEffect(() => {
   const fetchCourses = async () => {
       try {
-          const response = await axios.get('http://localhost:4000/api/courses');
+          const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
           setAllCourses(response.data);
       } catch (error) {
           console.error('Error fetching courses:', error);

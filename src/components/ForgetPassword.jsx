@@ -19,7 +19,7 @@ const ForgotPassword = () => {
     setMessage('');
     setError('');
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/forget-password', { email });
+      const response = await axios.post('https://courseappbackend-yydm.onrender.com/api/auth/forget-password', { email });
       setMessage(response.data.message);
     } catch (err) {
       setError(err.response.data.message || 'Something went wrong');
