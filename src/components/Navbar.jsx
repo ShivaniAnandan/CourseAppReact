@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import logo from '../assets/Askmeidentity 2.png';
-import icons from '../assets/Group 1.png';
+// import icons from '../assets/Group 1.png';
 import iconcart from  '../assets/iconcart.png';
 import { useNavigate, Link } from 'react-router-dom';
 import { myContext } from '../App';
