@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import logo from '../assets/Askmeidentity 2.png';
 import icons from '../assets/Group 1.png';
-import carticon from '../assets/iconcart.png';
+import iconcart from  '../assets/iconcart.png';
 import { useNavigate, Link } from 'react-router-dom';
 import { myContext } from '../App';
 
@@ -47,7 +47,7 @@ const Navbar = ({ login }) => {
             </ul>
             <div className="cart-icon">
             <img 
-                src={carticon} 
+                src={iconcart} 
                 className='iconimg' 
                 alt="Icons" 
                 style={{cursor: 'pointer'}} 
