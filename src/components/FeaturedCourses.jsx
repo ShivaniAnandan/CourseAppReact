@@ -1,11 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import circle from '../assets/Ellipse 118.png';
-import courseimg1 from '../assets/course1.png';
-import courseimg2 from '../assets/course2.png';
-import courseimg3 from '../assets/course3.png';
-import courseimg4 from '../assets/course4.png';
-import courseimg5 from '../assets/course5.png';
-import courseimg6 from '../assets/course6.png';
 import cartimg from '../assets/cart.png';
 import cartFilledImg from '../assets/cart-filled.png';
 import icon1 from '../assets/Icon.png';

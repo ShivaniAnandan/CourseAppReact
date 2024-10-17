@@ -6,6 +6,7 @@ import { myContext } from '../App';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import  Filter  from './Filter';
+import fallbackImg from '../assets/allcoursesimage/fsd4.jpg';
 
 
 const Courses = () => {
@@ -64,7 +65,7 @@ const Courses = () => {
                     {filteredCourses.map(course => (
                         <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={course._id}>
                             <div className="card">
-                                <img src={course.img} className="card-img-top" alt={course.title} />
+                                <img src={course.img} className="card-img-top" alt={course.title}  onError={(e) => { e.target.src = fallbackImg; }} />
                                 <div className="card-body mx-2">
                                     <div className="d-flex justify-content-between mb-3" style={{ margin: 0, color: "#4E596B" }}>
                                         <p className="card-text">{course.views} Students</p>
