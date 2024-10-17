@@ -5,15 +5,15 @@ import cartFilledImg from '../assets/cart-filled.png';
 import { myContext } from '../App';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import  Filter  from './Filter';
+import Filter from './Filter';
 import fallbackImg from '../assets/allcoursesimage/fsd4.jpg';
-
+import { ClipLoader } from 'react-spinners'; // Import spinner
 
 const Courses = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const { toggleCartItem, cart, user } = useContext(myContext);
-    const {allCourses,setAllCourses} = useContext(myContext);
-    // const [allCourses, setAllCourses] = useState([]);
+    const { allCourses, setAllCourses } = useContext(myContext);
+    const [loading, setLoading] = useState(true); // Loader state
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -27,17 +27,17 @@ const Courses = () => {
             try {
                 const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
                 setAllCourses(response.data);
+                setLoading(false); // Stop loader once data is fetched
             } catch (error) {
                 console.error('Error fetching courses:', error);
+                setLoading(false); // Stop loader even if there is an error
             }
         };
 
         fetchCourses();
     }, []);
 
-   
     useEffect(() => {
-        // Extract category from query params
         const params = new URLSearchParams(location.search);
         const category = params.get('category');
         setSelectedCategory(category);
@@ -45,7 +45,7 @@ const Courses = () => {
 
     const isInCart = (course) => cart.some(cartItem => cartItem._id === course._id);
 
-    const filteredCourses = selectedCategory 
+    const filteredCourses = selectedCategory
         ? allCourses.filter(course => course.courseName === selectedCategory)
         : allCourses;
 
@@ -61,36 +61,43 @@ const Courses = () => {
         <div>
             <Filter onSelectCategory={handleSelectCategory} />
             <div className="container">
-                <div className="row">
-                    {filteredCourses.map(course => (
-                        <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={course._id}>
-                            <div className="card">
-                                <img src={course.img} className="card-img-top" alt={course.title}  onError={(e) => { e.target.src = fallbackImg; }} />
-                                <div className="card-body mx-2">
-                                    <div className="d-flex justify-content-between mb-3" style={{ margin: 0, color: "#4E596B" }}>
-                                        <p className="card-text">{course.views} Students</p>
-                                        <p className="card-text">{course.readTime}</p>
-                                    </div>
-                                    <h5 className="card-title mb-4">
-                                        <a href={`/course/${course._id}`} style={{ textDecoration: 'none', color: '#000' }}>
-                                            {course.title}
-                                        </a>
-                                    </h5>
-                                    <div className="d-flex justify-content-between" style={{ margin: 0, color: "#4E596B", alignItems: "baseline" }}>
-                                        <p className="card-text">Rs.499</p>
-                                        <img 
-                                            src={isInCart(course) ? cartFilledImg : cartimg} 
-                                            alt="carticon" 
-                                            className='img'
-                                            style={{ cursor: 'pointer' }} 
-                                            onClick={() => handleAddToCart(course)} // Toggle course in cart on click
-                                        />
+                {loading ? (
+                    // Show loader when data is being fetched
+                    <div className="d-flex justify-content-center">
+                        <ClipLoader size={50} color={"#123abc"} loading={loading} />
+                    </div>
+                ) : (
+                    <div className="row">
+                        {filteredCourses.map(course => (
+                            <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={course._id}>
+                                <div className="card">
+                                    <img src={course.img} className="card-img-top" alt={course.title} onError={(e) => { e.target.src = fallbackImg; }} />
+                                    <div className="card-body mx-2">
+                                        <div className="d-flex justify-content-between mb-3" style={{ margin: 0, color: "#4E596B" }}>
+                                            <p className="card-text">{course.views} Students</p>
+                                            <p className="card-text">{course.readTime}</p>
+                                        </div>
+                                        <h5 className="card-title mb-4">
+                                            <a href={`/course/${course._id}`} style={{ textDecoration: 'none', color: '#000' }}>
+                                                {course.title}
+                                            </a>
+                                        </h5>
+                                        <div className="d-flex justify-content-between" style={{ margin: 0, color: "#4E596B", alignItems: "baseline" }}>
+                                            <p className="card-text">Rs.499</p>
+                                            <img
+                                                src={isInCart(course) ? cartFilledImg : cartimg}
+                                                alt="carticon"
+                                                className='img'
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => handleAddToCart(course)}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

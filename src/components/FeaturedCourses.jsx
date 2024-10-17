@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import circle from '../assets/Ellipse 118.png';
 import cartimg from '../assets/cart.png';
 import cartFilledImg from '../assets/cart-filled.png';
@@ -13,9 +13,12 @@ import rect3 from '../assets/Rectangle 8681.png';
 import { myContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners'; // Import spinner
 
 const FeaturedCourses = () => {
     const {allCourses,setAllCourses} = useContext(myContext);
+
+    const [loading, setLoading] = useState(true); // Loader state
 
     const {toggleCartItem,cart,user } = useContext(myContext);
 
@@ -26,8 +29,10 @@ const FeaturedCourses = () => {
             try {
                 const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
                 setAllCourses(response.data);
+                setLoading(false); // Stop loader once data is fetched
             } catch (error) {
                 console.error('Error fetching courses:', error);
+                setLoading(false); // Stop loader even if there is an error
             }
         };
 
@@ -109,6 +114,12 @@ const FeaturedCourses = () => {
             <p style={{fontWeight:"bold"}} className='text-center'>The feature courses are we invented our teaching part</p>
             <div className="courses">
             <div className="container">
+            {loading ? (
+                    // Show loader when data is being fetched
+                    <div className="d-flex justify-content-center">
+                        <ClipLoader size={50} color={"#123abc"} loading={loading} />
+                    </div>
+                ) : (
             <div className="row">
                 {filteredCourses.map(course => {
                    return(
@@ -141,6 +152,7 @@ const FeaturedCourses = () => {
                    )
                 })}
             </div>
+            )}
             </div>
             <div className='d-flex justify-content-center btn-flex'>
             <button className='course-btn btn' onClick={() => navigate('/courses')}>Explore courses</button>
