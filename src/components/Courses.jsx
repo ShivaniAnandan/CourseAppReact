@@ -6,7 +6,7 @@ import { myContext } from '../App';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import  Filter  from './Filter';
-import { ClipLoader } from 'react-spinners';
+
 
 const Courses = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -55,15 +55,6 @@ const Courses = () => {
             navigate('/login'); // Redirect to login page if not logged in
         }
     };
-
-    if (!allCourses.length) {
-        // Show a loader if courses are still being fetched
-        return (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-            <ClipLoader color="#ffffff" size={50} /> {/* Adjust color as needed */}
-          </div>
-        );
-    }
 
     return (
         <div>
