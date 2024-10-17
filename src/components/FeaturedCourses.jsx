@@ -18,6 +18,7 @@ import rect2 from '../assets/Rectangle 8682.png';
 import rect3 from '../assets/Rectangle 8681.png';
 import { myContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 const FeaturedCourses = () => {
     const {allCourses} = useContext(myContext);
 
@@ -36,6 +37,15 @@ const FeaturedCourses = () => {
             navigate('/login'); // Redirect to login page if not logged in
         }
     };
+
+    if (!allCourses.length) {
+        // Show a loader if courses are still being fetched
+        return (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+            <ClipLoader color="#ffffff" size={50} /> {/* Adjust color as needed */}
+          </div>
+        );
+      }
 
     // const courses = [
     //     {
