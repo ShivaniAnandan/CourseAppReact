@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import circle from '../assets/Ellipse 118.png';
 import courseimg1 from '../assets/course1.png';
 import courseimg2 from '../assets/course2.png';
@@ -18,15 +18,27 @@ import rect2 from '../assets/Rectangle 8682.png';
 import rect3 from '../assets/Rectangle 8681.png';
 import { myContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const FeaturedCourses = () => {
-    const {allCourses} = useContext(myContext);
+    const {allCourses,setAllCourses} = useContext(myContext);
 
     const {toggleCartItem,cart,user } = useContext(myContext);
 
     const navigate = useNavigate();
 
-   
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
+                setAllCourses(response.data);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            }
+        };
+
+        fetchCourses();
+    }, []);
 
     const isInCart = (course) => cart.some(cartItem => cartItem._id === course._id);
 

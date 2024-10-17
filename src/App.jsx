@@ -273,18 +273,18 @@ const [allCourses,setAllCourses] = useState([]);
 const [cart, setCart] = useState([]);
 
  // Fetch courses from backend
- useEffect(() => {
-  const fetchCourses = async () => {
-      try {
-          const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
-          setAllCourses(response.data);
-      } catch (error) {
-          console.error('Error fetching courses:', error);
-      }
-  };
+//  useEffect(() => {
+//   const fetchCourses = async () => {
+//       try {
+//           const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
+//           setAllCourses(response.data);
+//       } catch (error) {
+//           console.error('Error fetching courses:', error);
+//       }
+//   };
 
-  fetchCourses();
-}, []);
+//   fetchCourses();
+// }, []);
 
 // Function to sync the cart with localStorage
 const syncCartToLocalStorage = (cart) => {
@@ -339,7 +339,7 @@ return (
         {/* <p className='h1'>App Component</p> */}
         <BrowserRouter>
              {/* Providing context */}
-             <myContext.Provider value={{user,setUser,allCourses,cart, addToCart, removeFromCart, getCartCount, toggleCartItem, clearCart}}>
+             <myContext.Provider value={{user,setUser,allCourses,setAllCourses,cart, addToCart, removeFromCart, getCartCount, toggleCartItem, clearCart}}>
             <div>
               <Navbar login={login}/>
             </div>

@@ -11,7 +11,7 @@ import  Filter  from './Filter';
 const Courses = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const { toggleCartItem, cart, user } = useContext(myContext);
-    const {allCourses} = useContext(myContext);
+    const {allCourses,setAllCourses} = useContext(myContext);
     // const [allCourses, setAllCourses] = useState([]);
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,18 +21,18 @@ const Courses = () => {
     };
 
     // Fetch courses from backend
-    // useEffect(() => {
-    //     const fetchCourses = async () => {
-    //         try {
-    //             const response = await axios.get('http://localhost:4000/api/courses');
-    //             setAllCourses(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching courses:', error);
-    //         }
-    //     };
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const response = await axios.get('https://courseappbackend-yydm.onrender.com/api/courses');
+                setAllCourses(response.data);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            }
+        };
 
-    //     fetchCourses();
-    // }, []);
+        fetchCourses();
+    }, []);
 
    
     useEffect(() => {
