@@ -123,7 +123,7 @@ const FeaturedCourses = () => {
             <div className="row">
                 {filteredCourses.map(course => {
                    return(
-                   <div className="col-4 mb-3" key={course._id}>
+                   <div className="col-md-4 col-sm-12 mb-3" key={course._id}>
                    <div className="card">
                    <img src={course.img} className="card-img-top" alt="..." />
                    <div className="card-body mx-2">

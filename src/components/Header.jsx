@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <>
         <div className="content">
-            <div className='header' style={{color:"#FFFFFF"}}>
+            <div className='headers' style={{color:"#FFFFFF"}}>
                 <div className="left">
                     <p>Successful coaches are visionaries</p>
                     <h1 className='h1 mb-5'>Good <span style={{color:"#0E38CD"}}>coaching</span> is <br></br>good teaching & <br></br>nothing else.</h1>
@@ -33,7 +33,7 @@ const Header = () => {
                     </div>
                     <div className="form-flex">
                         {/* <p>What do you want to learn today?</p> */}
-                        <div style={{display: 'flex', alignItems: 'center'}}>
+                        <div className="search" style={{display: 'flex', alignItems: 'center'}}>
                             <input
                                 type="text"
                                 placeholder="What do you want to learn today?"

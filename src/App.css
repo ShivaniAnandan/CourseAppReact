@@ -60,7 +60,7 @@ nav{
 .h1{
   font-size: 50px;
 }
-.header{
+.headers{
    background: linear-gradient(256.52deg, rgba(4, 1, 108, 0.8) 0.69%, rgba(74, 22, 189, 0.8) 100%);
    display: flex;
    justify-content: space-between;
@@ -133,6 +133,7 @@ nav{
   padding: 2rem;
   /* width: 98.5%; */
   margin: 0;
+  margin-top: 0;
   position: relative;
   z-index: 1;
 }
@@ -430,7 +431,7 @@ left: 180px;
 }
 
 /* Tablet landscape (768px - 1024px) */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+/* @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .header {
     padding: 2rem 1rem;
   }
@@ -440,10 +441,10 @@ left: 180px;
   .card {
     width: 250px;
   }
-}
+} */
 
 /* Mobile landscape (320px - 480px) */
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+/* @media only screen and (min-width: 320px) and (max-width: 480px) {
   .header {
     padding: 1rem 0.5rem;
   }
@@ -456,10 +457,10 @@ left: 180px;
   .img-card img {
     width: 60%;
   }
-}
+} */
 
 /* Mobile portrait (0px - 320px) */
-@media only screen and (max-width: 320px) {
+/* @media only screen and (max-width: 320px) {
   .header {
     padding: 0.5rem 0.2rem;
   }
@@ -475,7 +476,7 @@ left: 180px;
   .testimonials {
     flex-direction: column;
   }
-}
+} */
 
 /* Payment page Syling */
 
@@ -605,3 +606,36 @@ left: 180px;
 /* .form,.field{
   color: #FFFFFF;
 } */
+
+@media only screen and (max-width: 700px){
+  .headers{
+   flex-direction: column;
+   flex-wrap: wrap;
+  }
+  .form-flex{
+   width: 310px;
+   padding: 0;
+  }
+  .search{
+    flex-direction: column;
+   }
+   .bottom{
+     flex-direction: column;
+   }
+   .content-flex{
+     flex-direction: column;
+     flex-wrap: wrap;
+   }
+   .content-flex img{
+     display: none;
+   }
+   .d-flex{
+     flex-direction: column;
+   }
+   .footer-top{
+     flex-direction: column;
+   }
+   .category{
+    padding: 10px;
+   }
+}

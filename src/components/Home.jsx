@@ -22,7 +22,7 @@ const Home = () => {
         <FeaturedCourses />
         {/* <Categories /> */}
         <ITCategories onSelectCategory={handleSelectCategory}/>
-        <ImageComponents />
+        {/* <ImageComponents /> */}
         <Testimonials />
         <Footer />
         </div>
