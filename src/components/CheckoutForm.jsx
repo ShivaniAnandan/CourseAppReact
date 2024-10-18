@@ -189,7 +189,7 @@ const CheckoutForm = ({ totalPrice, courseIds }) => {
         }
 
         const options = {
-            key: 'rzp_test_PV1oQ0oMtgXOsq', // Replace with your Razorpay Test Key ID
+            key: 'rzp_test_41nVdIciWR98NN', // Replace with your Razorpay Test Key ID
             amount: totalPrice * 100, // Amount in paise (e.g., 30000 paise = 300 INR)
             currency: 'INR',
             name: 'Course App Checkout',
